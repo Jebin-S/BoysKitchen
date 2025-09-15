@@ -46,9 +46,9 @@ function renderMenu() {
     menuCache.forEach(item => {
       const card = document.createElement('div');
       card.className = 'menu-card';
-      const imgSrc = item.image && item.image.trim() ? item.image : '/images/no-image.png';
+      const imgSrc = item.image && item.image.trim() ? item.image : 'images/no-image.png';
       card.innerHTML = `
-        <img src="${imgSrc}" alt="${item.name}" onerror="this.src='/images/no-image.png'">
+        <img src="${imgSrc}" alt="${item.name}" onerror="this.src='images/no-image.png'">
         <div class="info">
           <div class="name">${item.name}</div>
           <div class="meta">₹${item.price}</div>
@@ -139,7 +139,7 @@ if(menuForm){
       image: '' // filename path if chosen
     };
     const f = $('menuImageFile').files && $('menuImageFile').files[0];
-    if(f) data.image = '/images/' + f.name;
+    if(f) data.image = 'images/' + f.name;
 
     if(id){
       db.collection('menu').doc(id).set(data).then(()=>{ renderMenu(); menuForm.reset(); $('imagePreview').innerHTML=''; });
