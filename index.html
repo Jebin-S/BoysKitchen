@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Food Stall Ordering</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Firebase v8 (compat) -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+  <!-- SheetJS for Excel export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+  <header><h1>Boy's Kitchen — Order System</h1></header>
+
+  <nav class="tabs">
+    <button class="tablink" onclick="openTab(event,'Orders')" id="defaultOpen">Orders</button>
+    <button class="tablink" onclick="openTab(event,'KitchenDelivery')">Kitchen & Delivery</button>
+    <button class="tablink" onclick="openTab(event,'AllOrders')">All Orders</button>
+    <button class="tablink" onclick="openTab(event,'MenuManagement')">Menu Management</button>
+  </nav>
+
+  <!-- ORDERS TAB -->
+  <section id="Orders" class="tabcontent">
+    <h2>Place Order</h2>
+
+    <label class="field">
+      Customer name
+      <input id="customerName" placeholder="Customer name (optional)">
+    </label>
+
+    <div class="menu-row">
+      <h3>Food</h3>
+      <div id="menuFood" class="menu-grid"></div>
+    </div>
+
+    <div class="menu-row">
+      <h3>Drinks</h3>
+      <div id="menuDrinks" class="menu-grid"></div>
+    </div>
+
+    <div class="menu-row">
+      <h3>Desserts</h3>
+      <div id="menuDesserts" class="menu-grid"></div>
+    </div>
+
+    <div class="order-row">
+      <div class="order-total">Total: ₹<span id="orderTotal">0</span></div>
+      <div><button id="placeOrderBtn">Place Order</button></div>
+    </div>
+  </section>
+
+  <!-- KITCHEN & DELIVERY -->
+  <section id="KitchenDelivery" class="tabcontent" style="display:none;">
+    <h2>Kitchen - Item Totals (Pending only)</h2>
+    <div class="kitchen-columns">
+      <div class="kitchen-column">
+        <h3>Food</h3>
+        <div id="kitchenFood"></div>
+      </div>
+      <div class="kitchen-column">
+        <h3>Drinks & Desserts</h3>
+        <div id="kitchenDrinks"></div>
+      </div>
+    </div>
+
+    <hr>
+
+    <h2>Delivery Queue (Pending items)</h2>
+    <div class="delivery-columns">
+      <div>
+        <h4>Food</h4>
+        <div id="deliveryFoodList" class="delivery-list"></div>
+      </div>
+      <div>
+        <h4>Drinks & Desserts</h4>
+        <div id="deliveryDrinkList" class="delivery-list"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALL ORDERS -->
+  <section id="AllOrders" class="tabcontent" style="display:none;">
+    <h2>All Orders</h2>
+    <div id="allOrdersList" class="all-orders-grid"></div>
+    <div style="margin-top:12px;">
+      <button id="exportExcel">Download Orders (Excel)</button>
+    </div>
+  </section>
+
+  <!-- MENU MANAGEMENT -->
+  <section id="MenuManagement" class="tabcontent" style="display:none;">
+    <h2>Menu Management</h2>
+
+    <form id="menuForm">
+      <input type="hidden" id="menuItemId" value="">
+      <label class="field">Name <input id="menuName" required></label>
+      <label class="field">Price (₹) <input id="menuPrice" type="number" required></label>
+      <label class="field">Category
+        <select id="menuCategory">
+          <option value="food">Food</option>
+          <option value="drink">Drink</option>
+          <option value="dessert">Dessert</option>
+        </select>
+      </label>
+      <label class="field">Stock <input id="menuStock" type="number" value="0"></label>
+
+      <label class="field">Image (choose file)
+        <input id="menuImageFile" type="file" accept="image/*">
+      </label>
+      <div id="imagePreview" style="margin:8px 0;"></div>
+
+      <div>
+        <button type="submit">Save item</button>
+      </div>
+    </form>
+
+    <h3 style="margin-top:18px;">Existing menu</h3>
+    <ul id="menuMgmtList"></ul>
+  </section>
+
+  <script src="app.js"></script>
+  <script>
+    // default open
+    document.addEventListener('DOMContentLoaded', ()=> {
+      document.getElementById('defaultOpen').click();
+    });
+  </script>
+</body>
+</html>

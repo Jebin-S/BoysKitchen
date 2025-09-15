@@ -1,0 +1,65 @@
+/* Reset & base */
+*{box-sizing:border-box}
+body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial;margin:18px;background:#f6f8fb;color:#223}
+header h1{text-align:center;color:#114b8b;margin-bottom:10px}
+
+/* Tabs */
+.tabs{display:flex;gap:8px;justify-content:center;margin-bottom:14px;flex-wrap:wrap}
+.tablink{background:#eef3fb;border:0;padding:10px 14px;border-radius:8px;cursor:pointer;font-size: 25px; font-weight:6900}
+.tablink.active{background:#1f6fe7;color:#fff}
+
+/* Tab content panel */
+.tabcontent{background:#fff;border-radius:10px;padding:16px;box-shadow:0 6px 20px rgba(18,43,86,0.06);margin-bottom:18px}
+.field{display:block;margin:8px 0}
+.field input,.field select{width:100%;padding:8px;border:1px solid #e2e8f0;border-radius:6px;margin-top:6px}
+
+/* Menu grid */
+.menu-row{margin:12px 0}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:8px}
+.menu-card{display:flex;gap:10px;align-items:center;padding:10px;border-radius:8px;border:1px solid #e9f0fb;background:#fbfdff}
+.menu-card img{width:64px;height:64px;border-radius:8px;object-fit:cover;border:1px solid #eceff4}
+.menu-card .info{font-size: 25px; flex:1}
+.menu-card .info .name{font-weight:700}
+.menu-card .controls{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.menu-card input[type="number"]{width:80px;padding:6px;font-size: 15px;border-radius:6px;border:1px solid #dfe7f4}
+
+/* order row */
+.order-row{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+
+/* kitchen columns */
+.kitchen-columns{display:flex;gap:14px;margin-top:8px}
+.kitchen-column{flex:1;padding:10px;border-radius:8px;border:1px solid #eef4fb;background:#fcfeff}
+.kitchen-column .row{display:flex;justify-content:space-between;padding:8px;margin:6px 0;border-radius:6px;background:#f3f8ff}
+
+/* delivery columns */
+.delivery-columns{display:flex;gap:18px;margin-top:10px}
+.delivery-list{display:flex;flex-direction:column;gap:10px}
+.delivery-item{font-size: 20px;display:flex;justify-content:space-between;align-items:center;padding:10px;border-radius:8px;border:1px solid #e9f2fb;background:#fff}
+.delivery-item .left{display:flex;flex-direction:column}
+.delivery-item button{background:#2fb36f;border:0;color:#fff;padding:6px 10px;border-radius:6px;cursor:pointer}
+.delivery-item button.cancel{background:#e05b5b}
+
+/* all orders */
+.all-orders-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:8px}
+.orderCard{padding:12px;border-radius:8px;border:1px solid #e9f2fb;background:#fff}
+.orderCard h3{margin:0 0 8px}
+.orderCard p{display:flex;justify-content:space-between;align-items:center;margin:6px 0}
+
+/* menu management list */
+#menuMgmtList{margin-top:10px}
+#menuMgmtList li{padding:8px;background:#fbfdff;border-radius:6px;border:1px solid #eef4fb;margin-bottom:6px}
+
+/* buttons */
+button{font-weight:700}
+
+.order-total {
+  font-size: 30px;   /* increase text size */
+  font-weight: bold; /* optional for emphasis */
+}
+
+#placeOrderBtn {
+  font-size: 30px;   /* increase button text size */
+  padding: 10px 20px; /* make the button itself larger */
+  border-radius: 6px; /* optional: rounded corners */
+  cursor: pointer;   /* pointer on hover */
+}
